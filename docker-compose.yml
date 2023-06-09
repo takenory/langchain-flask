@@ -3,8 +3,8 @@ services:
   app:
     build: .
     ports:
-      - "5001:5000"
+      - "8080:8080"
     container_name: app
     volumes:
       - ./app:/usr/src/app
-    command: flask run --host=0.0.0.0
+    command: gunicorn app:app -b 0.0.0.0:8080
