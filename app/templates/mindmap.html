@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PlantUML Viewer</title>
+  <style>
+    #diagram {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="diagram">{{ diagram }}</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/raphael"></script>
+  <script src="https://cdn.jsdelivr.net/npm/underscore"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var diagramText = "Bob->Alice: Hello";
+
+      var diagramContainer = document.getElementById('diagram');
+      //var imageSource = "http://www.plantuml.com/plantuml/svg/" + encodeURI(PlantUML.encode(diagramText));
+      var imageSource = "http://www.plantuml.com/plantuml/svg/" + encodeURI(plantumlEncoder.encode(diagramText));
+
+      diagramContainer.innerHTML = "<img src='" + imageSource + "'>";
+    });
+  </script>
+</body>
+</html>
+
