@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from langchain.agents import load_tools
 from langchain.agents import initialize_agent
 from langchain.llms import OpenAI
