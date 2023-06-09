@@ -1,2 +1,5 @@
 flask
 Gunicorn
+openai
+langchain
+google-search-results
