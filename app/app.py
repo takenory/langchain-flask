@@ -11,6 +11,7 @@ def index():
   llm = OpenAI(streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()], temperature=0)
   tools = load_tools(["serpapi", "llm-math"], llm=llm)
   agent = initialize_agent(tools, llm, agent="zero-shot-react-description", verbose=True)
-  response = agent.run("FlaskというWebアプリケーションフレームワークが提供する機能をマインドマップにまとめて、PlantUMLのテキストデータとして生成してください。")
+  prompt = request.args.get('prompt')
+  response = agent.run(prompt)
 
   return response
