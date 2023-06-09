@@ -19,9 +19,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var diagramText = "Bob->Alice: Hello";
-
-      var diagramContainer = document.getElementById('diagram');
+      var diagramText = document.getElementById('diagram');
       //var imageSource = "http://www.plantuml.com/plantuml/svg/" + encodeURI(PlantUML.encode(diagramText));
       var imageSource = "http://www.plantuml.com/plantuml/svg/" + encodeURI(plantumlEncoder.encode(diagramText));
 
