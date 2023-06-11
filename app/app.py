@@ -22,8 +22,8 @@ def chain():
 
   prompt = instruction + 'について、Web上の最新情報でリサーチした内容を元に日本語で'
   if output_format == 'mindmap':
-    diagram = agent.run(prompt + 'マインドマップにまとめて、PlantUMLで出力してください。')
+      diagram = agent.run(prompt + 'をマインドマップにまとめて、@startmindmapで始まり@endmindmapで終わるPlantUMLで出力してください。')
     return render_template('mindmap.html', diagram = diagram)
   else:
-    response = agent.run(prompt + 'プレーンテキストでまとめて、出力してください。')
+    response = agent.run(prompt + 'をプレーンテキストでまとめて、出力してください。')
     return response
