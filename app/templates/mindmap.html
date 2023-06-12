@@ -19,7 +19,8 @@
     //  });
     $(document).ready(function(){
       $("#generate_map").click(function(){
-        var diagramText = document.getElementById('diagram');
+        var diagramContainer = document.getElementById('diagram');
+        var diagramText = diagramContainer.innerHTML;
         var imageSource = "http://www.plantuml.com/plantuml/svg/" + encodeURI(plantumlEncoder.encode(diagramText));
         diagramContainer.innerHTML = "<img src='" + imageSource + "'>";
       });
