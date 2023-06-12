@@ -3,3 +3,4 @@ Gunicorn
 openai
 langchain
 google-search-results
+google-api-python-client
