@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
-from langchain.agents import ZeroShotAgent, Tool, AgentExecutor, load_tools
-from langchain import OpenAI, SerpAPIWrapper, LLMChain
+from langchain.agents import initialize_agent
+from langchain.llms import OpenAI
+from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 
 app = Flask(__name__)
 
@@ -10,8 +11,8 @@ def index():
 
 @app.route('/chain', methods=['post'])
 def chain():
-  #llm = OpenAI(streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()], temperature=0)
-  llm = OpenAI(streaming=True, temperature=0)
+  llm = OpenAI(streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()], temperature=0)
+  #llm = OpenAI(streaming=True, temperature=0)
   tools = load_tools(["google-search"], llm=llm)
   agent = initialize_agent(tools, llm, agent="zero-shot-react-description", verbose=True)
   # prompt = request.args.get('prompt')
