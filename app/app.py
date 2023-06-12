@@ -10,7 +10,8 @@ def index():
 
 @app.route('/chain', methods=['post'])
 def chain():
-  llm = OpenAI(streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()], temperature=0)
+  #llm = OpenAI(streaming=True, callbacks=[FinalStreamingStdOutCallbackHandler()], temperature=0)
+  llm = OpenAI(streaming=True, temperature=0)
   tools = load_tools(["google-search"], llm=llm)
   agent = initialize_agent(tools, llm, agent="zero-shot-react-description", verbose=True)
   # prompt = request.args.get('prompt')
